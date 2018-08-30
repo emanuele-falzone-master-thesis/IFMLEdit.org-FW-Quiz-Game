@@ -72,6 +72,8 @@ exports.rules = [
             return {
                 'src': {children: ['css-file']},
                 'css-file': {name: 'main.css', content: custom.cssfile.css()},
+                'js': {children: ['i18']},
+                'i18': {name: 'i18.js', content: custom.i18.js()},
             };
 
         })

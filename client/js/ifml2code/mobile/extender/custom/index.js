@@ -30,6 +30,12 @@ module.exports = {
     'action-random-question-3': {
         'js': require('./action-random-question.js.ejs')
     },
+    'action-load-settings': {
+        'js': require('./action-load-settings.js.ejs')
+    },
+    'action-save-settings': {
+        'js': require('./action-save-settings.js.ejs')
+    },
     'answers': {
         'js': require('./repo-answers.js.ejs'),
         'json': require('./repo-answers.json.ejs'),
@@ -57,9 +63,11 @@ module.exports = {
     },
     'system-event-back-2': {
         'js': require('./system-event-back.js.ejs'),
+        'html': require('./system-event-back-d.html.ejs'),
     },
     'system-event-back-3': {
         'js': require('./system-event-back.js.ejs'),
+        'html': require('./system-event-back-d.html.ejs'),
     },
     'system-event-back-4': {
         'js': require('./system-event-back.js.ejs'),
@@ -72,6 +80,10 @@ module.exports = {
     'system-event-back-6': {
         'js': require('./system-event-back.js.ejs'),
         'html': require('./system-event-back-s.html.ejs'),
+    },
+    'system-event-back-7': {
+        'js': require('./system-event-back.js.ejs'),
+        'html': require('./system-event-back.html.ejs'),
     },
     'system-event-qr-decode': {
         'js': require('./system-event-qr-decode.js.ejs'),
@@ -118,5 +130,11 @@ module.exports = {
     },
     'view-container-question-explanation': {
         'html': require('./c-view-container-question-explanation.html.ejs'),
+    },
+    'form-settings': {
+        'html': require('./c-form-settings.html.ejs'),
+    },
+    'i18': {
+        'js': require('./i18.js.ejs'),
     },
 }
