@@ -18,6 +18,18 @@ module.exports = {
     'action-update-level-1': {
         'js': require('./action-update-level.js.ejs')
     },
+    'action-update-level-2': {
+        'js': require('./action-update-level.js.ejs')
+    },
+    'action-random-question-1': {
+        'js': require('./action-random-question.js.ejs')
+    },
+    'action-random-question-2': {
+        'js': require('./action-random-question.js.ejs')
+    },
+    'action-random-question-3': {
+        'js': require('./action-random-question.js.ejs')
+    },
     'answers': {
         'js': require('./repo-answers.js.ejs'),
         'json': require('./repo-answers.json.ejs'),
@@ -27,6 +39,9 @@ module.exports = {
         'json': require('./repo-questions.json.ejs'),
     },
     'list-card-answers': {
+        'html': require('./c-list-card-answers.html.ejs'),
+    },
+    'list-question-answers': {
         'html': require('./c-list-card-answers.html.ejs'),
     },
     'main-application': {
@@ -46,6 +61,18 @@ module.exports = {
     'system-event-back-3': {
         'js': require('./system-event-back.js.ejs'),
     },
+    'system-event-back-4': {
+        'js': require('./system-event-back.js.ejs'),
+        'html': require('./system-event-back.html.ejs'),
+    },
+    'system-event-back-5': {
+        'js': require('./system-event-back.js.ejs'),
+        'html': require('./system-event-back-s.html.ejs'),
+    },
+    'system-event-back-6': {
+        'js': require('./system-event-back.js.ejs'),
+        'html': require('./system-event-back-s.html.ejs'),
+    },
     'system-event-qr-decode': {
         'js': require('./system-event-qr-decode.js.ejs'),
         'html': require('./system-event-back.html.ejs'),
@@ -57,6 +84,15 @@ module.exports = {
         'html': require('./c-details-card-result.html.ejs'),
     },
     'details-card-explanation': {
+        'html': require('./c-details-card-explanation.html.ejs'),
+    },
+    'details-question': {
+        'html': require('./c-details-card-question.html.ejs'),
+    },
+    'details-question-result': {
+        'html': require('./c-details-card-result.html.ejs'),
+    },
+    'details-question-explanation': {
         'html': require('./c-details-card-explanation.html.ejs'),
     },
     'view-container-home': {
@@ -73,5 +109,14 @@ module.exports = {
     },
     'cssfile': {
         'css': require('./main.css.ejs'),
+    },
+    'view-container-question': {
+        'html': require('./c-view-container-card.html.ejs'),
+    },
+    'view-container-question-result': {
+        'html': require('./c-view-container-question-result.html.ejs'),
+    },
+    'view-container-question-explanation': {
+        'html': require('./c-view-container-question-explanation.html.ejs'),
     },
 }
