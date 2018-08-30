@@ -21,7 +21,7 @@ var self = this;
     $.ajax({
         url: 'http://funergy.ifmledit.org/funergy/Services/ffv/getNextQuestion',
         data: {
-            language: 'en',
+            language: localStorage.getItem("settings.language"),
             level: localStorage.getItem("question.level"),
             oid: localStorage.getItem("question.oid")
         },
@@ -33,7 +33,7 @@ var self = this;
             content: obj.content,
             correct: obj.correct,
             explanation: obj.explaination,
-            language: 'en',
+            language: localStorage.getItem("settings.language"),
             level: localStorage.getItem("question.level")
         }).then(function () {
             return self.collection.answers.insert([{

@@ -1,29 +1,22 @@
 /*jslint node: true, nomen: true */
 "use strict";
 
-var Promise = require('bluebird');
+var Promise = require('bluebird'),
+    i18nextko = require('i18next-ko');
 
-function Action() { // add "options" parameters if needed
-    // TODO: Global Initialization
-    /*
-    example:
-    this.collection = options.repositories.mail;
-    */
+function Action() {
+
 }
+
 Action.prototype.run = function (parameters, solve) { // add "onCancel" parameters if needed
     // Parameters:
 <% for (var i = 0; i < parameters.length; i += 1) { -%>
     // parameters['<%= parameters[i]%>']
 <% } -%>
 
-    // TODO: Execution
-    /*
-    example:
-    mail.find({subject: 'Re: ' + data.subject})
-        .then(solve);
-    */
-    // THIS CAN BE REMOVED (BEGIN)
-    Materialize.toast('<%= name%>', 2000)
+    localStorage.setItem("settings.language", parameters['language']);
+    i18nextko.setLanguage(parameters['language']);
+    
     solve({
 <% if (events.length) { -%>
         event: '<%= events[0].id%>', // <%= events[0].name%>
@@ -41,7 +34,6 @@ Action.prototype.run = function (parameters, solve) { // add "onCancel" paramete
    } -%>
         }
     });
-    // THIS CAN BE REMOVED (END)
 };
 
 exports.createAction = function (options) {
