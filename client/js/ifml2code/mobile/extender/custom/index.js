@@ -43,6 +43,9 @@ module.exports = {
     'system-event-back-2': {
         'js': require('./system-event-back.js.ejs'),
     },
+    'system-event-back-3': {
+        'js': require('./system-event-back.js.ejs'),
+    },
     'system-event-qr-decode': {
         'js': require('./system-event-qr-decode.js.ejs'),
         'html': require('./system-event-back.html.ejs'),
@@ -53,6 +56,9 @@ module.exports = {
     'details-card-result': {
         'html': require('./c-details-card-result.html.ejs'),
     },
+    'details-card-explanation': {
+        'html': require('./c-details-card-explanation.html.ejs'),
+    },
     'view-container-home': {
         'html': require('./c-view-container-home.html.ejs'),
     },
@@ -61,6 +67,9 @@ module.exports = {
     },
     'view-container-card-result': {
         'html': require('./c-view-container-card-result.html.ejs'),
+    },
+    'view-container-card-explanation': {
+        'html': require('./c-view-container-card-explanation.html.ejs'),
     },
     'cssfile': {
         'css': require('./main.css.ejs'),
