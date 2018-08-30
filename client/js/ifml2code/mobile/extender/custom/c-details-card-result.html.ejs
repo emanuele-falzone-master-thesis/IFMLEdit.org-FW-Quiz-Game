@@ -17,7 +17,7 @@
     </div>
 </div>
 <% if (events.length) { -%>
-<div class="card-action">
+<div class="explanation">
 <%     for (var i = 0; i < events.length; i += 1) {
            if (events[i].stereotype == 'system') { -%>
     <c-<%= events[i].id %> params="trigger: trigger.bind($data,'<%= events[i].id %>')"></c-<%= events[i].id %>>
