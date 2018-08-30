@@ -1,6 +1,6 @@
 <span>
     <top-logo></top-logo>
-<%  children = _(children).reverse().value();
+<%  children = _(children).sortBy('id').value();
     for (var i = 0; i < children.length; i+=1) { -%>
     <!-- <%= children[i].name %> -->
     <c-<%= children[i].id %> params="context: context"></c-<%= children[i].id %>>

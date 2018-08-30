@@ -3,45 +3,78 @@
 
 var Promise = require('bluebird');
 
-function Action() { // add "options" parameters if needed
-    // TODO: Global Initialization
-    /*
-    example:
-    this.collection = options.repositories.mail;
-    */
+function Action(options) {
+    this.collection = {
+        questions: options.repositories.questions,
+        answers: options.repositories.answers
+    };
 }
+
 Action.prototype.run = function (parameters, solve) { // add "onCancel" parameters if needed
     // Parameters:
 <% for (var i = 0; i < parameters.length; i += 1) { -%>
     // parameters['<%= parameters[i]%>']
 <% } -%>
 
-    // TODO: Execution
-    /*
-    example:
-    mail.find({subject: 'Re: ' + data.subject})
-        .then(solve);
-    */
-    // THIS CAN BE REMOVED (BEGIN)
-    Materialize.toast('<%= name%>', 2000)
-    solve({
+var self = this;
+
+    $.ajax({
+        url: 'http://funergy.ifmledit.org/funergy/Services/ffv/getNextQuestion',
+        data: {
+            language: 'en',
+            level: localStorage.getItem("question.level"),
+            oid: localStorage.getItem("question.oid")
+        },
+        timeout: 1500
+    }).done(function (obj) {
+        localStorage.setItem("question.oid", obj.oid);
+        self.collection.questions.insert({
+            id: 'online',
+            content: obj.content,
+            correct: obj.correct,
+            explanation: obj.explaination,
+            language: 'en',
+            level: localStorage.getItem("question.level")
+        }).then(function () {
+            return self.collection.answers.insert([{
+                id: 'online-wrong',
+                content: obj.wrong,
+                correctness: false,
+                question: 'online'
+            }, {
+                id: 'online-correct',
+                content: obj.correct,
+                correctness: true,
+                question: 'online'
+            }]);
+        }).then(function () {
+            solve({
 <% if (events.length) { -%>
-        event: '<%= events[0].id%>', // <%= events[0].name%>
+                event: '<%= events[0].id%>', // <%= events[0].name%>
 <% } -%>
 <% for (var i = 1; i < events.length; i += 1) { -%>
-        // event: '<%= events[i].id%>', // <%= events[i].name%>
+                // event: '<%= events[i].id%>', // <%= events[i].name%>
 <% } -%>
-        data: {
-<% for (var i = 0; i < results.length; i += 1) {
-       if (parameters.indexOf(results[i]) === -1) { -%>
-            '<%= results[i]%>': '0',
-<%     } else { -%>
-            '<%= results[i]%>': parameters['<%= results[i]%>'],
-<%     }
-   } -%>
-        }
+                data: {
+                    'question': 'online'
+                }
+            });
+        });
+    }).fail(function (xhr) {
+        self.collection.questions.random().then(function (result) {
+            solve({
+<% if (events.length) { -%>
+                event: '<%= events[0].id%>', // <%= events[0].name%>
+<% } -%>
+<% for (var i = 1; i < events.length; i += 1) { -%>
+                // event: '<%= events[i].id%>', // <%= events[i].name%>
+<% } -%>
+                data: {
+                    'question': String(result.id)
+                }
+            });
+        });
     });
-    // THIS CAN BE REMOVED (END)
 };
 
 exports.createAction = function (options) {

@@ -3,7 +3,8 @@
     <!-- <%= children[i].name %> -->
     <c-<%= children[i].id %> params="context: context"></c-<%= children[i].id %>>
 <% } -%>
-<% for (var i = 0; i < events.length; i += 1) {
+<%  events = _(events).sortBy('id').value();
+    for (var i = 0; i < events.length; i += 1) {
        if (events[i].stereotype == 'system') { -%>
     <c-<%= events[i].id %> params="trigger: trigger.bind($data,'<%= events[i].id %>')"></c-<%= events[i].id %>>
 <%     } else { -%>
